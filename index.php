@@ -29,14 +29,10 @@ class Pessoa
     }
 }
 
-
-
 function calcularIMC(float $peso, float $altura): float
 {
     return $peso / ($altura * $altura);
 }
-
-
 
 function classificarIMC(float $imc): string
 {
@@ -50,7 +46,6 @@ function classificarIMC(float $imc): string
         return "Obesidade";
     }
 }
-
 
 $nome = "";
 $peso = "";
@@ -86,10 +81,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Calculadora de IMC</title>
 </head>
 
+<style>
+
+body{
+    background-color: #d4dbf1;
+    color: #0e2958;
+}
+
+ .container{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #aebef3;
+    border-radius: 8px;
+    font-family:calibri;
+    font-size: 1.2rem;
+    border: 2px double #09275e;
+ }
+
+ h1{
+    color: #23488e;
+    text-align: center;
+
+ }
+
+ button{
+    color: #203968;
+    background-color: #7c9edc;
+    font-family:Arial; 
+    border: 1px double #09275e;
+    padding: 5px 10px;
+    font-size:1rem;
+    cursor:pointer;
+    transition: background-color 0.5s;
+ }
+
+ .resultado{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c0c9e7;
+    border-radius: 8px;
+    font-family:calibri;
+    font-size: 1.2rem;
+    border: 2px double #09275e;
+ }
+
+</style>
 <body>
 
     <h1>Calculadora de IMC</h1>
 
+<div class="container">
     <form method="POST">
 
         <label>Nome:</label>
@@ -110,10 +155,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Calcular IMC</button>
 
     </form>
+</div>
+
+<br>
 
     <?php if ($imc != ""): ?>
 
-        <h2>Resultado</h2>
+    <div class="resultado">
+        <h2>Resultado:</h2>
 
         <p>
             Nome:
@@ -129,6 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Classificação:
             <?php echo $classificacao; ?>
         </p>
+    <div>
 
     <?php endif; ?>
 
